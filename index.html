@@ -127,8 +127,8 @@
         <p>We are a team of embedded engineers, electrical integrators and app designers focused on making embedded systems that feel modern, reliable and easy to understand.</p>
       </div>
       <div class="key-stats">
-        <div><strong>7 sensors</strong><span>DHT11, OLED display,KY037 Sensor, PIR Sensor, Touch Sensors,INMP441 Sensors, Motion Sensor, PM2.5 Sensor</span></div>
-        <div><strong>1 relays</strong><span>lights, fans</span></div>
+        <div><strong>7 sensors</strong><span>DHT11, PMS5003, BH1750, INMP441 microphone, PIR motion, capacitive touch, SSD1306 OLED display</span></div>
+        <div><strong>1 relay</strong><span>lights, fans</span></div>
         
       </div>
     </div>
@@ -162,9 +162,14 @@
 <section class="scroll-sequence" id="sensors" aria-label="Hardware components">
   <div class="scroll-sequence__sticky">
     <div class="scroll-sequence__intro">
-      <p class="section__eyebrow">Sensors &amp; boards</p>
-      <h2 class="scroll-sequence__title">Scroll to split each layer of the system.</h2>
-      <p class="scroll-sequence__hint">Keep scrolling — panels peel apart one component at a time.</p>
+      <div class="scroll-sequence__heading">
+        <span class="scroll-sequence__emblem" aria-hidden="true"></span>
+        <div>
+          <p class="section__eyebrow">Sensors &amp; boards</p>
+          <h2 class="scroll-sequence__title">Scroll to break the shell apart.</h2>
+        </div>
+      </div>
+      <p class="scroll-sequence__hint">Keep scrolling — each panel cracks open to reveal the part inside.</p>
     </div>
 
     <div class="scroll-sequence__meta">
@@ -172,7 +177,7 @@
       <div class="scroll-sequence__rail" aria-hidden="true">
         <div class="scroll-sequence__rail-fill" id="scrollRailFill"></div>
       </div>
-      <span class="scroll-sequence__total">07</span>
+      <span class="scroll-sequence__total">09</span>
     </div>
 
     <div class="scroll-sequence__stage" id="scrollStage">
@@ -189,6 +194,14 @@
                 <span class="scroll-chapter__tag">01 — Core controller</span>
                 <h3>ESP32-S3</h3>
                 <p>The project brain — Wi-Fi, firmware logic, and relay orchestration run locally so ATMOS stays responsive even when the app disconnects.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">What it does</span>
+                  <ul>
+                    <li>Dual-core Xtensa LX7 running firmware and Wi-Fi side by side</li>
+                    <li>Evaluates every sensor rule locally — no cloud round-trip</li>
+                    <li>Keeps relays and automations running if the dashboard disconnects</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -208,6 +221,14 @@
                 <span class="scroll-chapter__tag">02 — Climate sensing</span>
                 <h3>DHT11</h3>
                 <p>Temperature and humidity readings feed climate-aware rules — trigger fans, adjust relays, and keep indoor comfort within safe bounds.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">What it does</span>
+                  <ul>
+                    <li>Single-wire digital read for temperature and relative humidity</li>
+                    <li>Feeds climate rules that trigger fans and vents automatically</li>
+                    <li>Sampled every few seconds — enough for room-scale comfort control</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -227,6 +248,14 @@
                 <span class="scroll-chapter__tag">03 — Air quality</span>
                 <h3>PMS5003</h3>
                 <p>Laser particle sensing tracks PM2.5 levels in real time, enabling ventilation and filtration responses before air quality becomes a problem.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">What it does</span>
+                  <ul>
+                    <li>Laser-scatter particle counter reading PM1.0, PM2.5 and PM10</li>
+                    <li>Flags unsafe air quality before it becomes noticeable</li>
+                    <li>Triggers ventilation and filtration relays automatically</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -246,6 +275,14 @@
                 <span class="scroll-chapter__tag">04 — Ambient light</span>
                 <h3>BH1750</h3>
                 <p>Precision lux measurement drives adaptive lighting — dim when daylight is sufficient, brighten when rooms need it.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">What it does</span>
+                  <ul>
+                    <li>I2C ambient light sensor with a direct lux readout — no calibration math</li>
+                    <li>Wide 1–65,535 lux range, dim rooms to direct sun</li>
+                    <li>Drives adaptive lighting: dim when daylight is enough, brighten when it isn't</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -265,6 +302,14 @@
                 <span class="scroll-chapter__tag">05 — Acoustic sensing</span>
                 <h3>INMP441</h3>
                 <p>High-fidelity I2S audio capture for noise monitoring, voice triggers, and security awareness without dedicated analog modules.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">What it does</span>
+                  <ul>
+                    <li>I2S digital MEMS microphone — 24-bit audio, no noisy analog stage</li>
+                    <li>Tracks ambient noise levels for comfort and awareness</li>
+                    <li>Can trigger sound-based automations without a dedicated audio board</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -284,6 +329,14 @@
                 <span class="scroll-chapter__tag">06 — Occupancy</span>
                 <h3>PIR motion</h3>
                 <p>Passive infrared detection triggers occupancy-based automations — lights, fans, and security modes that respond to presence, not schedules.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">What it does</span>
+                  <ul>
+                    <li>Detects infrared changes from moving bodies in its field of view</li>
+                    <li>Purely passive — zero engagement needed from occupants</li>
+                    <li>Wakes occupancy-based automations: lights, fans, security modes</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -297,12 +350,74 @@
           <div class="split-panel__reveal">
             <div class="scroll-chapter__layout">
               <div class="scroll-chapter__media">
+                <img src="atmos-series/Capacitive Touch Sensor - EDN.jpeg" alt="Capacitive touch sensor module" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">07 — Manual control</span>
+                <h3>Capacitive touch</h3>
+                <p>A touch-sensitive input gives operators a local manual override at the panel itself, no app required.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">What it does</span>
+                  <ul>
+                    <li>Detects a touch via capacitance change — no moving parts to wear out</li>
+                    <li>Gives a local manual override right at the panel</li>
+                    <li>Immune to the dust and moisture that degrade mechanical buttons</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="scroll-chapter" data-chapter="7" data-accent="ember">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
+                <img src="atmos-series/0_96 Inch OLED Display Module, 128x64 Pixel I2C SSD1306 Luminous OLED Screen Board Compatible with.jpeg" alt="SSD1306 OLED display module" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">08 — On-device display</span>
+                <h3>SSD1306 OLED</h3>
+                <p>A compact onboard display shows live readings directly on the unit — no phone or app needed to check room status.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">What it does</span>
+                  <ul>
+                    <li>128×64 monochrome I2C display, sharp at close range</li>
+                    <li>Shows live readings directly on the unit — no app required</li>
+                    <li>Low enough power draw to stay on continuously</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="scroll-chapter" data-chapter="8" data-accent="sage">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
                 <img src="atmos-series/508836458012801390.jpeg" alt="Complete ATMOS system assembly" loading="lazy">
               </div>
               <div class="scroll-chapter__copy">
-                <span class="scroll-chapter__tag">07 — Full assembly</span>
+                <span class="scroll-chapter__tag">09 — Full assembly</span>
                 <h3>Integrated system</h3>
-                <p>Every sensor, relay channel, and firmware rule comes together in one compact build — extendable by design as new inputs and outputs are added.</p>
+                <p>Every sensor, display, relay channel, and firmware rule comes together in one compact build — extendable by design as new inputs and outputs are added.</p>
+                <div class="sensor-spec glass">
+                  <span class="sensor-spec__eyebrow">System summary</span>
+                  <ul>
+                    <li>8 sensor &amp; display modules feeding one firmware loop</li>
+                    <li>1 relay channel switching real hardware</li>
+                    <li>Every layer above, in one compact, extendable build</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -322,6 +437,7 @@
         <p>Add CO₂, VOC, pressure, or custom room sensors — the firmware accepts more channels and keeps the dashboard in sync.</p>
       </article>
       <article class="sensor-showcase__card" data-reveal="up">
+        <img src="atmos-series/8×8 Dot Matrix with MAX7219 - Maker Advisor.jpeg" alt="MAX7219 8x8 dot matrix display module" loading="lazy">
         <strong>Touch &amp; display</strong>
         <p>Capacitive touch inputs and MAX7219 matrix displays add local interaction without leaving the embedded stack.</p>
       </article>
@@ -338,14 +454,36 @@
     <p class="section__eyebrow">Demo</p>
     <h2>Watch the ATMOS system in action.</h2>
     <p class="section__body section__body--wide">See sensor acquisition, relay activation, and the Flutter dashboard reflecting real-time state in a complete embedded control loop.</p>
-    <div class="video-frame">
-      <video controls preload="metadata" poster="assets/images/demo-poster.svg" id="demoVideo">
-        <source src="assets/videos/atmos-demo.mp4" type="video/mp4">
-        Your browser doesn't support embedded video.
-      </video>
-      <div class="video-frame__placeholder" id="videoPlaceholder">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="var(--text-muted)" stroke-width="2"/><polygon points="26,20 46,32 26,44" fill="var(--text-muted)"/></svg>
-        <p>Drop a video named <code>atmos-demo.mp4</code> into <code>assets/videos/</code> or update the source path.</p>
+    <div class="video-grid">
+      <div class="video-frame glass">
+        <video controls preload="metadata">
+          <source src="assets/videos/atmos-demo-1.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+        <div class="video-frame__placeholder">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="var(--text-muted)" stroke-width="2"/><polygon points="26,20 46,32 26,44" fill="var(--text-muted)"/></svg>
+          <p>Drop a video named <code>atmos-demo-1.mp4</code> into <code>assets/videos/</code> or update the source path.</p>
+        </div>
+      </div>
+      <div class="video-frame glass">
+        <video controls preload="metadata">
+          <source src="assets/videos/atmos-demo-2.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+        <div class="video-frame__placeholder">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="var(--text-muted)" stroke-width="2"/><polygon points="26,20 46,32 26,44" fill="var(--text-muted)"/></svg>
+          <p>Drop a video named <code>atmos-demo-2.mp4</code> into <code>assets/videos/</code> or update the source path.</p>
+        </div>
+      </div>
+      <div class="video-frame glass">
+        <video controls preload="metadata">
+          <source src="assets/videos/atmos-demo-3.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+        <div class="video-frame__placeholder">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="var(--text-muted)" stroke-width="2"/><polygon points="26,20 46,32 26,44" fill="var(--text-muted)"/></svg>
+          <p>Drop a video named <code>atmos-demo-3.mp4</code> into <code>assets/videos/</code> or update the source path.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -372,25 +510,78 @@
     <p class="section__eyebrow">Build gallery</p>
     <h2>Hardware, wiring and interface together.</h2>
     <div class="gallery-grid">
-      <figure><img src="hardware-overview.svg" alt="ATMOS ESP32-S3 unit with sensors and relay module"><figcaption>ESP32-S3 build and relay module.</figcaption></figure>
-      <figure><img src="sensors-closeup.svg" alt="Close up of DHT11, LDR, and KY-037 sensors"><figcaption>Sensor cluster for environment monitoring.</figcaption></figure>
-      <figure><img src="app-dashboard.svg" alt="ATMOS Flutter app dashboard screen"><figcaption>Live data and device control from the app.</figcaption></figure>
+      <figure><img src="atmos-series/【sought-after】 1 PCS ESP32 ESP32-S3 WiFi IoT Dual Type-C Development Board Board.jpeg" alt="ESP32-S3 core controller board" loading="lazy"><figcaption>ESP32-S3 core controller.</figcaption></figure>
+      <figure><img src="atmos-series/508836458012801390.jpeg" alt="Complete ATMOS hardware assembly" loading="lazy"><figcaption>Complete ATMOS build.</figcaption></figure>
+      <figure><img src="atmos-series/Weather Station Using DHT11 Sensor & M5Stack Core ESP32.jpeg" alt="DHT11 climate sensing module" loading="lazy"><figcaption>DHT11 climate sensing module.</figcaption></figure>
+      <figure><img src="atmos-series/PM2_5 Air Particle_Dust Sensor Laser Inside Digital Output Module Air Purifier G5 PMS5003 High.jpeg" alt="PMS5003 air quality sensor module" loading="lazy"><figcaption>PMS5003 air-quality sensor.</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section class="section section--team" id="team">
-  <div class="section__inner section__inner--split">
-    <div class="split__visual">
-      <div class="team-photo">
-        <img src="team-photo.svg" alt="ATMOS project team" loading="lazy">
+  <div class="section__inner">
+    <div class="section__inner--split">
+      <div class="split__visual">
+        <div class="team-emblem glass">
+          <span class="team-emblem__shape" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="split__text">
+        <p class="section__eyebrow">Team — <span class="placeholder">Add your group name</span></p>
+        <h2 class="section__title">A capstone build by embedded systems and app specialists.</h2>
+        <p class="section__body">ATMOS was designed and built by a five-person team extending across firmware, hardware integration, and mobile UX. The goal was a dependable embedded control system with a professional presentation layer.</p>
+        <p class="section__body">The project showcases clean sensor wiring, a smart relay interface, and a Flutter dashboard that makes environment control accessible and reliable.</p>
       </div>
     </div>
-    <div class="split__text">
-      <p class="section__eyebrow">Team</p>
-      <h2 class="section__title">A capstone build by embedded systems and app specialists.</h2>
-      <p class="section__body">ATMOS was designed and built by a five-person team extending across firmware, hardware integration, and mobile UX. The goal was a dependable embedded control system with a professional presentation layer.</p>
-      <p class="section__body">The project showcases clean sensor wiring, a smart relay interface, and a Flutter dashboard that makes environment control accessible and reliable.</p>
+
+    <div class="team-grid">
+      <div class="team-tile glass" data-reveal="up">
+        <p class="team-tile__name placeholder">Full name</p>
+        <span class="team-tile__role">Firmware engineer</span>
+        <p class="team-tile__blurb">Add a sentence about what they focused on.</p>
+      </div>
+      <div class="team-tile glass" data-reveal="up">
+        <p class="team-tile__name placeholder">Full name</p>
+        <span class="team-tile__role">Firmware engineer</span>
+        <p class="team-tile__blurb">Add a sentence about what they focused on.</p>
+      </div>
+      <div class="team-tile glass" data-reveal="up">
+        <p class="team-tile__name placeholder">Full name</p>
+        <span class="team-tile__role">Hardware integration</span>
+        <p class="team-tile__blurb">Add a sentence about what they focused on.</p>
+      </div>
+      <div class="team-tile glass" data-reveal="up">
+        <p class="team-tile__name placeholder">Full name</p>
+        <span class="team-tile__role">Hardware integration</span>
+        <p class="team-tile__blurb">Add a sentence about what they focused on.</p>
+      </div>
+      <div class="team-tile glass" data-reveal="up">
+        <p class="team-tile__name placeholder">Full name</p>
+        <span class="team-tile__role">Mobile &amp; UX design</span>
+        <p class="team-tile__blurb">Add a sentence about what they focused on.</p>
+      </div>
+    </div>
+
+    <div class="team-mission glass">
+      <h3>What we stand for</h3>
+      <div class="team-mission__grid">
+        <div class="team-mission__item">
+          <strong>Local-first control</strong>
+          <p>Decisions get made on the device, not in the cloud — the system stays useful even when the network doesn't.</p>
+        </div>
+        <div class="team-mission__item">
+          <strong>Built for real rooms</strong>
+          <p>Sensor placement and relay wiring are designed around actual physical spaces, not just app screens.</p>
+        </div>
+        <div class="team-mission__item">
+          <strong>Clear visibility</strong>
+          <p>Every reading and every action is visible — on the device and in the dashboard — so nothing is a black box.</p>
+        </div>
+        <div class="team-mission__item">
+          <strong>Designed to extend</strong>
+          <p>New sensors, displays, and relay channels should drop in without a rebuild.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

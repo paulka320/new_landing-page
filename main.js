@@ -58,12 +58,14 @@
   }
 
   // ---------- Video placeholder fallback ----------
-  var demoVideo = document.getElementById('demoVideo');
-  var videoPlaceholder = document.getElementById('videoPlaceholder');
-  if (demoVideo && videoPlaceholder) {
-    demoVideo.addEventListener('error', function () {
-      demoVideo.style.display = 'none';
-      videoPlaceholder.style.display = 'flex';
+  Array.prototype.slice.call(document.querySelectorAll('.video-frame')).forEach(function (frame) {
+    var video = frame.querySelector('video');
+    var placeholder = frame.querySelector('.video-frame__placeholder');
+    if (!video || !placeholder) return;
+
+    video.addEventListener('error', function () {
+      video.style.display = 'none';
+      placeholder.style.display = 'flex';
     }, true);
 
     // If there's no real <source> reachable, `error` fires on the source
@@ -71,13 +73,13 @@
     // catches that case shortly after load.
     window.addEventListener('load', function () {
       setTimeout(function () {
-        if (demoVideo.readyState === 0 && demoVideo.error) {
-          demoVideo.style.display = 'none';
-          videoPlaceholder.style.display = 'flex';
+        if (video.readyState === 0 && video.error) {
+          video.style.display = 'none';
+          placeholder.style.display = 'flex';
         }
       }, 800);
     });
-  }
+  });
 
   // ---------- Scroll reveal, parallax, and active nav ----------
   var revealTargets = document.querySelectorAll('[data-reveal], .section__title, .section__body, .feature-card, .gallery-grid figure, .footer__cta');
@@ -138,7 +140,7 @@
     }
 
     // Tilt interaction for cards (sensor showcase, panels, features)
-    var tiltCards = document.querySelectorAll('.sensor-showcase__card, .panel-card, .feature-card');
+    var tiltCards = document.querySelectorAll('.sensor-showcase__card, .panel-card, .feature-card, .team-tile');
     tiltCards.forEach(function (card) {
       card.style.transformStyle = 'preserve-3d';
       card.addEventListener('mousemove', function (e) {
