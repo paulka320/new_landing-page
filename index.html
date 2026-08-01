@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATMOS — Embedded Climate & Energy Control</title>
+<meta name="description" content="ATMOS is a professional embedded climate and energy control system powered by ESP32-S3, with a Flutter dashboard for live monitoring, automations, and remote control.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top">
+      <span class="nav__mark" aria-hidden="true"></span>
+      ATMOS
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about">Overview</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#sensors">Sensors</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#demo">Demo</a>
+      <a href="#team">Team</a>
+    </nav>
+    <a class="nav__cta" href="#contact">Talk to the team</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">ATMOS</p>
+      <h1 class="hero__title">Embedded climate and energy control for intelligent spaces.</h1>
+      <p class="hero__text">A polished ESP32-S3 system that senses air quality, temperature, light, sound and motion — then makes real hardware decisions through relays, firmware and a Flutter dashboard.</p>
+      <p class="hero__sub">ATMOS is built for dependable embedded automation, combining local sensor awareness with mobile-ready visibility.</p>
+      <div class="hero__actions">
+        <a href="#how-it-works" class="btn btn--primary">See how it works</a>
+        <a href="#sensors" class="btn btn--ghost">View sensors</a>
+      </div>
+      <div class="hero__badges">
+        <span>ESP32-S3</span>
+        <span>Flutter</span>
+        <span>DHT11</span>
+        <span>PMS5003</span>
+        <span>PIR</span>
+      </div>
+      <div class="ticker" role="status" aria-label="Live sensor readout">
+        <div class="ticker__track" id="tickerTrack"></div>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <div class="hero__panel-head">
+        <span>Project highlight</span>
+        <h2>Embedded sensing, local control, remote visibility.</h2>
+      </div>
+      <div class="panel-grid">
+        <div class="panel-card" data-reveal="up">
+          <strong>ESP32-S3</strong>
+          <p>Core controller that keeps the system live even when the app is offline.</p>
+        </div>
+        <div class="panel-card" data-reveal="up">
+          <strong>DHT11 + PMS5003</strong>
+          <p>Temperature, humidity and particle sensing for safer indoor air.</p>
+        </div>
+        <div class="panel-card" data-reveal="up">
+          <strong>LDR + KY-037</strong>
+          <p>Light and sound sensing for adaptive lighting and noise awareness.</p>
+        </div>
+        <div class="panel-card" data-reveal="up">
+          <strong>PIR + Relays</strong>
+          <p>Motion-based triggers and physically switched outputs for real-world actuation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--highlight">
+  <div class="section__inner section__inner--grid">
+    <div class="highlight-card">
+      <p class="highlight-card__eyebrow">Localized control</p>
+      <h3>Firmware-first decision making</h3>
+      <p>The ESP32-S3 keeps ATMOS responsive by evaluating rules locally, so the system stays active even when the network does not.</p>
+    </div>
+    <div class="highlight-card">
+      <p class="highlight-card__eyebrow">Embedded integrity</p>
+      <h3>Hardware that maps to real rooms</h3>
+      <p>Sensor inputs, relays and motion detection work together to match physical spaces, not just app screens.</p>
+    </div>
+    <div class="highlight-card">
+      <p class="highlight-card__eyebrow">Clear visibility</p>
+      <h3>Professional dashboard companion</h3>
+      <p>Flutter UI and live status reporting let operators monitor room conditions and outputs from anywhere.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--intro" id="about">
+  <div class="section__inner section__inner--split">
+    <div>
+      <p class="section__eyebrow">About ATMOS</p>
+      <h2>Professional embedded sensing for real spaces.</h2>
+      <p class="section__body">ATMOS combines a compact ESP32-S3 board with a curated suite of sensors and relay outputs. It senses climate, air quality, light, sound and occupancy, then acts on that data through dependable firmware rules and a polished Flutter dashboard.</p>
+      <p class="section__body">The project is designed for environments where responsiveness matters: local decision making at the edge, meaningful room context, and a clear presentation layer for operators.</p>
+      <p class="section__body">Built by an embedded systems team, ATMOS brings firmware, hardware integration and mobile UX together in a single, extendable system.</p>
+    </div>
+    <div class="about-summary">
+      <div class="about-summary__card">
+        <h3>About the project</h3>
+        <p>ATMOS is a climate and environment control system that turns sensor data into real-world outputs, combining monitoring and automation in one professional package.</p>
+      </div>
+      
+      <div class="about-summary__card">
+        <h3>About us</h3>
+        <p>We are a team of embedded engineers, electrical integrators and app designers focused on making embedded systems that feel modern, reliable and easy to understand.</p>
+      </div>
+      <div class="key-stats">
+        <div><strong>5 sensors</strong><span>temperature, humidity, air quality, light, motion</span></div>
+        <div><strong>4 relays</strong><span>lights, fans, doors, actuators</span></div>
+        <div><strong>Edge logic</strong><span>firmware-first decisions, app-aware reporting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--features" id="how-it-works">
+  <div class="section__inner">
+    <p class="section__eyebrow">How it works</p>
+    <h2>Sense. Decide. Act.</h2>
+    <div class="feature-grid">
+      <article class="feature-card">
+        <div class="feature-card__index">01</div>
+        <h3>Sensor fusion</h3>
+        <p>Integrated DHT11, PMS5003, LDR, KY-037 and PIR inputs create a richer room profile than any single measurement.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-card__index">02</div>
+        <h3>Embedded decisioning</h3>
+        <p>The ESP32-S3 evaluates sensor states locally, so actions happen immediately and reliably.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-card__index">03</div>
+        <h3>Physical actuation</h3>
+        <p>Relay outputs switch fans, lights, locks and motors with confirmed feedback to the app.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="scroll-sequence" id="sensors" aria-label="Hardware components">
+  <div class="scroll-sequence__sticky">
+    <div class="scroll-sequence__intro">
+      <p class="section__eyebrow">Sensors &amp; boards</p>
+      <h2 class="scroll-sequence__title">Scroll to split each layer of the system.</h2>
+      <p class="scroll-sequence__hint">Keep scrolling — panels peel apart one component at a time.</p>
+    </div>
+
+    <div class="scroll-sequence__meta">
+      <span class="scroll-sequence__counter" id="scrollCounter">01</span>
+      <div class="scroll-sequence__rail" aria-hidden="true">
+        <div class="scroll-sequence__rail-fill" id="scrollRailFill"></div>
+      </div>
+      <span class="scroll-sequence__total">07</span>
+    </div>
+
+    <div class="scroll-sequence__stage" id="scrollStage">
+      <article class="scroll-chapter is-active" data-chapter="0" data-accent="teal">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
+                <img src="【sought-after】 1 PCS ESP32 ESP32-S3 WiFi IoT Dual Type-C Development Board Board.jpeg" alt="ESP32-S3 development board" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">01 — Core controller</span>
+                <h3>ESP32-S3</h3>
+                <p>The project brain — Wi-Fi, firmware logic, and relay orchestration run locally so ATMOS stays responsive even when the app disconnects.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="scroll-chapter" data-chapter="1" data-accent="ember">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
+                <img src="Weather Station Using DHT11 Sensor & M5Stack Core ESP32.jpeg" alt="DHT11 temperature and humidity sensor" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">02 — Climate sensing</span>
+                <h3>DHT11</h3>
+                <p>Temperature and humidity readings feed climate-aware rules — trigger fans, adjust relays, and keep indoor comfort within safe bounds.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="scroll-chapter" data-chapter="2" data-accent="sage">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
+                <img src="PM2_5 Air Particle_Dust Sensor Laser Inside Digital Output Module Air Purifier G5 PMS5003 High.jpeg" alt="PMS5003 air quality sensor" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">03 — Air quality</span>
+                <h3>PMS5003</h3>
+                <p>Laser particle sensing tracks PM2.5 levels in real time, enabling ventilation and filtration responses before air quality becomes a problem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="scroll-chapter" data-chapter="3" data-accent="teal">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
+                <img src="GY-302 BH1750 MODULE SENSOR CAHAYA LUX SENSOR INTENSITAS CAHAYA LUMEN.jpeg" alt="BH1750 ambient light sensor" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">04 — Ambient light</span>
+                <h3>BH1750</h3>
+                <p>Precision lux measurement drives adaptive lighting — dim when daylight is sufficient, brighten when rooms need it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="scroll-chapter" data-chapter="4" data-accent="ember">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
+                <img src="INMP441 Pre-Soldered I2S Omnidirectional Microphone Module.jpeg" alt="INMP441 I2S microphone module" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">05 — Acoustic sensing</span>
+                <h3>INMP441</h3>
+                <p>High-fidelity I2S audio capture for noise monitoring, voice triggers, and security awareness without dedicated analog modules.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="scroll-chapter" data-chapter="5" data-accent="sage">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
+                <img src="IoT based Home Security System Using PIR Sensors, NodeMCU ESP8266, and Adafruit IO.jpeg" alt="PIR motion sensor" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">06 — Occupancy</span>
+                <h3>PIR motion</h3>
+                <p>Passive infrared detection triggers occupancy-based automations — lights, fans, and security modes that respond to presence, not schedules.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="scroll-chapter" data-chapter="6" data-accent="teal">
+        <div class="split-panel">
+          <div class="split-panel__curtain split-panel__curtain--left"></div>
+          <div class="split-panel__curtain split-panel__curtain--right"></div>
+          <div class="split-panel__reveal">
+            <div class="scroll-chapter__layout">
+              <div class="scroll-chapter__media">
+                <img src="508836458012801390.jpeg" alt="Complete ATMOS system assembly" loading="lazy">
+              </div>
+              <div class="scroll-chapter__copy">
+                <span class="scroll-chapter__tag">07 — Full assembly</span>
+                <h3>Integrated system</h3>
+                <p>Every sensor, relay channel, and firmware rule comes together in one compact build — extendable by design as new inputs and outputs are added.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sensors-footer">
+  <div class="section__inner">
+    <p class="section__eyebrow">Extendable by design</p>
+    <h2>Built to grow with your deployment.</h2>
+    <div class="sensor-showcase__track">
+      <article class="sensor-showcase__card" data-reveal="up">
+        <strong>New sensors</strong>
+        <p>Add CO₂, VOC, pressure, or custom room sensors — the firmware accepts more channels and keeps the dashboard in sync.</p>
+      </article>
+      <article class="sensor-showcase__card" data-reveal="up">
+        <strong>Touch &amp; display</strong>
+        <p>Capacitive touch inputs and MAX7219 matrix displays add local interaction without leaving the embedded stack.</p>
+      </article>
+      <article class="sensor-showcase__card" data-reveal="up">
+        <strong>Scaling kit</strong>
+        <p>Hardware layout supports extra sensor modules and relay outputs as the project evolves beyond the capstone build.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--panel" id="demo">
+  <div class="section__inner">
+    <p class="section__eyebrow">Demo</p>
+    <h2>Watch the ATMOS system in action.</h2>
+    <p class="section__body section__body--wide">See sensor acquisition, relay activation, and the Flutter dashboard reflecting real-time state in a complete embedded control loop.</p>
+    <div class="video-frame">
+      <video controls preload="metadata" poster="assets/images/demo-poster.svg" id="demoVideo">
+        <source src="assets/videos/atmos-demo.mp4" type="video/mp4">
+        Your browser doesn't support embedded video.
+      </video>
+      <div class="video-frame__placeholder" id="videoPlaceholder">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="var(--text-muted)" stroke-width="2"/><polygon points="26,20 46,32 26,44" fill="var(--text-muted)"/></svg>
+        <p>Drop a video named <code>atmos-demo.mp4</code> into <code>assets/videos/</code> or update the source path.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stack">
+  <div class="stack__inner">
+    <p class="stack__label">System overview</p>
+    <div class="stack__row">
+      <span>ESP32-S3 controller</span>
+      <span>DHT11 temperature + humidity</span>
+      <span>PMS5003 air quality</span>
+      <span>LDR ambient light</span>
+      <span>KY-037 noise sensor</span>
+      <span>PIR motion detector</span>
+      <span>4-channel relay outputs</span>
+      <span>Flutter mobile dashboard</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section--gallery" id="gallery">
+  <div class="section__inner">
+    <p class="section__eyebrow">Build gallery</p>
+    <h2>Hardware, wiring and interface together.</h2>
+    <div class="gallery-grid">
+      <figure><img src="hardware-overview.svg" alt="ATMOS ESP32-S3 unit with sensors and relay module"><figcaption>ESP32-S3 build and relay module.</figcaption></figure>
+      <figure><img src="sensors-closeup.svg" alt="Close up of DHT11, LDR, and KY-037 sensors"><figcaption>Sensor cluster for environment monitoring.</figcaption></figure>
+      <figure><img src="app-dashboard.svg" alt="ATMOS Flutter app dashboard screen"><figcaption>Live data and device control from the app.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section section--team" id="team">
+  <div class="section__inner section__inner--split">
+    <div class="split__visual">
+      <div class="team-photo">
+        <img src="team-photo.svg" alt="ATMOS project team" loading="lazy">
+      </div>
+    </div>
+    <div class="split__text">
+      <p class="section__eyebrow">Team</p>
+      <h2 class="section__title">A capstone build by embedded systems and app specialists.</h2>
+      <p class="section__body">ATMOS was designed and built by a five-person team extending across firmware, hardware integration, and mobile UX. The goal was a dependable embedded control system with a professional presentation layer.</p>
+      <p class="section__body">The project showcases clean sensor wiring, a smart relay interface, and a Flutter dashboard that makes environment control accessible and reliable.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--contact" id="contact">
+  <div class="section__inner">
+    <div class="contact-copy">
+      <p class="section__eyebrow">Let’s connect</p>
+      <h2>Interested in the ATMOS system?</h2>
+      <p>Reach out for a walkthrough, source access, or collaboration on further embedded deployments.</p>
+    </div>
+    <a href="mailto:hello@example.com" class="btn btn--primary">hello@example.com</a>
+  </div>
+</section>
+
+<!-- ============ CONTACT / FOOTER ============ -->
+</main>
+<footer class="footer" id="footer">
+  <div class="footer__inner">
+    <div class="footer__cta">
+      <h2>Interested in the project?</h2>
+      <p>Reach out for a walkthrough, the source, or to talk about where this goes next.</p>
+      <a href="mailto:hello@example.com" class="btn btn--primary">hello@example.com</a>
+    </div>
+    <div class="footer__meta">
+      <div class="footer__brand">
+        <span class="nav__mark" aria-hidden="true"></span> ATMOS
+      </div>
+      <p class="footer__note">Embedded systems capstone project &middot; Makerere University</p>
+      <div class="footer__links">
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
